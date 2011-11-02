@@ -1,4 +1,4 @@
 require 'omniauth-mindvalley/version'
-require 'omniauth/strategies/mindvalley_strategy'
+require 'omniauth/strategies/mindvalley'
 
-OmniAuth.config.add_camelization 'mindvalley', 'MindvalleyStrategy'
+OmniAuth.config.add_camelization 'mindvalley', 'Mindvalley'

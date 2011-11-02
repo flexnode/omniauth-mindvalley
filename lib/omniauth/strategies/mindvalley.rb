@@ -3,7 +3,7 @@ require 'multi_json'
 
 module OmniAuth
   module Strategies
-    class MindvalleyStrategy < OmniAuth::Strategies::OAuth2
+    class Mindvalley < OmniAuth::Strategies::OAuth2
       case Rails.env
       when 'production'
         option :client_options, {
