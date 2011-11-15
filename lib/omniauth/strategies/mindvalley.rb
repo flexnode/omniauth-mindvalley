@@ -13,9 +13,12 @@ module OmniAuth
         }
       else
         option :client_options, {
-          :site => 'http://0.0.0.0:3000',
-          :authorize_url => 'http://0.0.0.0:3000/oauth/authorize',
-          :token_url => 'http://0.0.0.0:3000/oauth/token'
+          :site => 'http://accounts.mindvalley.com',
+          :authorize_url => 'http://accounts.mindvalley.com/oauth/authorize',
+          :token_url => 'http://accounts.mindvalley.com/oauth/token'
+#          :site => 'http://0.0.0.0:3000',
+#          :authorize_url => 'http://0.0.0.0:3000/oauth/authorize',
+#          :token_url => 'http://0.0.0.0:3000/oauth/token'
         }
       end
 
