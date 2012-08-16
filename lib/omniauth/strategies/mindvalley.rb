@@ -22,7 +22,7 @@ module OmniAuth
         }
       end
 
-      uid { raw_info['id'] }
+      uid { raw_info['user']['id'] }
 
       info do
         {
