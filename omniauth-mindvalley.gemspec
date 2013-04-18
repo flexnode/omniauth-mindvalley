@@ -2,7 +2,7 @@
 require File.expand_path('../lib/omniauth-mindvalley/version', __FILE__)
 
 Gem::Specification.new do |gem|
-  gem.add_dependency 'hashie', '~> 1.2'
+  gem.add_dependency 'hashie', '> 1.2'
   gem.add_dependency 'omniauth', '~> 1.1.0'
   gem.add_dependency 'omniauth-oauth2', '~> 1.1.0'
 
