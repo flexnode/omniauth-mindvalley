@@ -7,9 +7,9 @@ module OmniAuth
       case Rails.env
       when 'production'
         option :client_options, {
-          :site => 'http://accounts.mindvalley.com',
-          :authorize_url => 'http://accounts.mindvalley.com/oauth/authorize',
-          :token_url => 'http://accounts.mindvalley.com/oauth/token'
+          :site => 'https://accounts.mindvalley.com',
+          :authorize_url => 'https://accounts.mindvalley.com/oauth/authorize',
+          :token_url => 'https://accounts.mindvalley.com/oauth/token'
         }
       else
         option :client_options, {
