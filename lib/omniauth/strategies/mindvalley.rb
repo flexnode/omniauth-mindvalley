@@ -24,7 +24,8 @@ module OmniAuth
       info do
         {
           'email' => raw_info["user"]['email'],
-          'first_name' => raw_info["user"]["info"]['first_name']
+          'first_name' => raw_info["user"]["info"]['first_name'],
+          'last_name' => raw_info["user"]["info"]['last_name']
         }
       end
 
