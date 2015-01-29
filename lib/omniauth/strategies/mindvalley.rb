@@ -1,36 +1,24 @@
-require 'omniauth-oauth2'
-require 'multi_json'
-
 module OmniAuth
   module Strategies
     class Mindvalley < OmniAuth::Strategies::OAuth2
-      case Rails.env
-      when 'production'
-        option :client_options, {
-          :site => 'https://accounts.mindvalley.com',
-          :authorize_url => 'https://accounts.mindvalley.com/oauth/authorize',
-          :token_url => 'https://accounts.mindvalley.com/oauth/token'
-        }
-      else
-        option :client_options, {
-          :site => 'http://accounts.mvstg.com',
-          :authorize_url => 'http://accounts.mvstg.com/oauth/authorize',
-          :token_url => 'http://accounts.mvstg.com/oauth/token'
-        }
-      end
+      option :client_options, {
+        :site => "http://localhost:3002",
+        :authorize_path => "/oauth/authorize"
+      }
 
-      uid { raw_info['user']['id'] }
+      uid { raw_info["response"]["id"] }
 
       info do
         {
-          'email' => raw_info["user"]['email'],
-          'first_name' => raw_info["user"]["info"]['first_name'],
-          'last_name' => raw_info["user"]["info"]['last_name']
+          :email => raw_info["response"]["email"],
+          :first_name => raw_info["response"]['first_name'],
+          :last_name => raw_info["response"]['last_name']
+          # and anything else you want to return to your API consumers
         }
       end
 
       def raw_info
-        @raw_info ||= MultiJson.decode(access_token.get('/me').body)
+        @raw_info ||= access_token.get('/client_api/v1/profile.json').parsed
       end
     end
   end
