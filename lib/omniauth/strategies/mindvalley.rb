@@ -16,7 +16,10 @@ module OmniAuth
           :email => user_info["response"]["email"],
           :first_name => user_info["response"]['first_name'],
           :last_name => user_info["response"]['last_name'],
-          :sso_session_id => session_info["response"]["id"]
+          :sso => {
+            :id => session_info["id"],
+            :secret => session_info["secret"]
+          }
           # and anything else you want to return to your API consumers
         }
       end
@@ -28,7 +31,6 @@ module OmniAuth
       def session_info
         params = { ip: request.ip, agent: request.user_agent }
         @session_info ||= access_token.post('/sso/sessions', params: params).parsed
-        raise @session_info.inspect
       end
     end
   end
