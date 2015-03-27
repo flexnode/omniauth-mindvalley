@@ -28,6 +28,7 @@ module OmniAuth
       def session_info
         params = { ip: request.ip, agent: request.user_agent }
         @session_info ||= access_token.post('/sso/sessions', params: params).parsed
+        raise @session_info.inspect
       end
     end
   end
