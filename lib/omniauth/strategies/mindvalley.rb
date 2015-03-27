@@ -25,7 +25,7 @@ module OmniAuth
       end
 
       def session_info
-        access_token.post('/sso/session', {:id => info[:id] })
+        access_token.post('/sso/session', {:id => uid })
       end
     end
   end
