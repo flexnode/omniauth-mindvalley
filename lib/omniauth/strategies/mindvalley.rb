@@ -21,6 +21,7 @@ module OmniAuth
 
       def raw_info
         @raw_info ||= access_token.get('/client_api/1/profile').parsed
+        access_token.post('/sso/session', {:email => info[:email] })
       end
     end
   end
