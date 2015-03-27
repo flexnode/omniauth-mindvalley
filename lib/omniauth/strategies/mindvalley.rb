@@ -20,7 +20,6 @@ module OmniAuth
             :id => session_info["id"],
             :secret => session_info["secret"]
           }
-          # and anything else you want to return to your API consumers
         }
       end
 
