@@ -8,20 +8,24 @@ module OmniAuth
         :authorize_path => "/oauth/authorize"
       }
 
-      uid { raw_info["response"]["id"] }
+      uid { user_info["response"]["id"] }
 
       info do
         {
-          :email => raw_info["response"]["email"],
-          :first_name => raw_info["response"]['first_name'],
-          :last_name => raw_info["response"]['last_name']
+          :id => user_info["response"]["id"],
+          :email => user_info["response"]["email"],
+          :first_name => user_info["response"]['first_name'],
+          :last_name => user_info["response"]['last_name']
           # and anything else you want to return to your API consumers
         }
       end
 
-      def raw_info
-        @raw_info ||= access_token.get('/client_api/1/profile').parsed
-        access_token.post('/sso/session', {:email => info[:email] })
+      def user_info
+        @user_info ||= access_token.get('/client_api/1/profile').parsed
+      end
+
+      def session_info
+        access_token.post('/sso/session', {:id => info[:id] })
       end
     end
   end
