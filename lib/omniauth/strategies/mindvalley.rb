@@ -35,7 +35,8 @@ module OmniAuth
           ENV['OMNIAUTH_SSO_PASSPORTS_PATH'].to_s
         else
           # We know this namespace is not occupied because /oauth is owned by Doorkeeper
-          '/oauth/sso/v1/passports'
+          #'/oauth/sso/v1/passports'
+          '/oauth/authorize'
         end
       end
 
