@@ -8,7 +8,6 @@ module OmniAuth
                :authorize_path => "/oauth/authorize"
              }
 
-
       def self.endpoint
         if ENV['OMNIAUTH_SSO_ENDPOINT'].to_s != ''
           ENV['OMNIAUTH_SSO_ENDPOINT'].to_s
@@ -40,8 +39,6 @@ module OmniAuth
         end
       end
 
-
-
       uid { user_info["response"]["id"] }
 
       info do
@@ -63,7 +60,8 @@ module OmniAuth
 
       def session_info
         params = { ip: request.ip, agent: request.user_agent }
-        @session_info ||= access_token.post('/sso/sessions', params: params).parsed
+        # @session_info ||= access_token.post('/sso/sessions', params: params).parsed
+        @session_info ||= access_token.post('/oauth/sso/v1/passports', params: params).parsed
       end
     end
   end
